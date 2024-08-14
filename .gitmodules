@@ -1,0 +1,4 @@
+[submodule "AElf"]
+	path = AElf
+	url = git@github.com:gldeng/AElf.git
+	branch = experiment/zkwasm-verifier
