@@ -35,7 +35,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
+      -
+        name: Install protoc v3.11.4
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip
+          curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v3.11.4/protoc-3.11.4-linux-x86_64.zip
+          unzip protoc-3.11.4-linux-x86_64.zip -d $HOME/protoc
+          sudo mv $HOME/protoc/bin/protoc /usr/local/bin/
+          sudo mv $HOME/protoc/include/* /usr/local/include/
       -
         name: Run build-aelf.sh script
         run: bash build-aelf.sh dotnet-build --version 1.0.0
