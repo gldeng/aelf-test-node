@@ -61,7 +61,7 @@ function dotnet_build() {
     dotnet clean "${HOME_DIR}"/AElf/AElf.AllSource.sln
     dotnet build AElf.AllSource.sln -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
     dotnet publish "${HOME_DIR}"/AElf/AElf.AllSource.sln \
-      /p:NoBuild=true --version-suffix "${_VERSION_NUM}" \
+      /p:NoBuild=false --version-suffix "${_VERSION_NUM}" \
       -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
 
     log $HOME_DIR ${_VERSION_NUM}
@@ -71,7 +71,7 @@ function dotnet_build() {
     dotnet clean "${HOME_DIR}"/AElf/AElf.AllSource.sln
     dotnet build AElf.AllSource.sln --configuration Release -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
     dotnet publish "${HOME_DIR}"/AElf/AElf.AllSource.sln \
-      /p:NoBuild=true --version-suffix "${_VERSION_NUM}" \
+      /p:NoBuild=false --version-suffix "${_VERSION_NUM}" \
       --configuration Release -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
 
     log $HOME_DIR ${_VERSION_NUM}
