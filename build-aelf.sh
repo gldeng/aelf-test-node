@@ -58,9 +58,9 @@ function dotnet_build() {
 
   log "开始执行命令：dotnet publish"
   if [ "${_LOG_LEVEL}" = "Debug" ]; then
-    dotnet clean "${HOME_DIR}"/AElf/AElf.All.sln
-    dotnet build AElf.All.sln -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
-    dotnet publish "${HOME_DIR}"/AElf/AElf.All.sln \
+    dotnet clean "${HOME_DIR}"/AElf/AElf.AllSource.sln
+    dotnet build AElf.AllSource.sln -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
+    dotnet publish "${HOME_DIR}"/AElf/AElf.AllSource.sln \
       /p:NoBuild=true --version-suffix "${_VERSION_NUM}" \
       -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
 
@@ -68,9 +68,9 @@ function dotnet_build() {
     [ $? -ne 0 ] && log -e "执行 dotnet publish 命令失败。"
 
   else
-    dotnet clean "${HOME_DIR}"/AElf/AElf.All.sln
-    dotnet build AElf.All.sln --configuration Release -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
-    dotnet publish "${HOME_DIR}"/AElf/AElf.All.sln \
+    dotnet clean "${HOME_DIR}"/AElf/AElf.AllSource.sln
+    dotnet build AElf.AllSource.sln --configuration Release -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
+    dotnet publish "${HOME_DIR}"/AElf/AElf.AllSource.sln \
       /p:NoBuild=true --version-suffix "${_VERSION_NUM}" \
       --configuration Release -o "${HOME_DIR}"/AElf/build /p:Platform="Any CPU" --framework net6.0 -nowarn:CS0436
 
