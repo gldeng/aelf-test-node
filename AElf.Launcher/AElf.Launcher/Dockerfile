@@ -25,7 +25,7 @@ COPY --from=publish /app/publish .
 RUN mkdir -p /root/.local/share/aelf/keys
 
 # Copy configuration files
-COPY ["AElf.Launcher/appsettings.json", "AElf.Launcher/appsettings.LocalTestNode.json", "./"]
+COPY ["AElf.Launcher/log4net.config", "AElf.Launcher/appsettings.json", "AElf.Launcher/appsettings.LocalTestNode.json", "./"]
 
 # Create symbolic link
 RUN ln -s /app/W1ptWN5n5mfdVvh3khTRm9KMJCAUdge9txNyVtyvZaYRYcqc1.json /root/.local/share/aelf/keys/W1ptWN5n5mfdVvh3khTRm9KMJCAUdge9txNyVtyvZaYRYcqc1.json
