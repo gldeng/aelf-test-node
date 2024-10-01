@@ -6,7 +6,7 @@ on:
       - 'v*.*.*'
 
 env:
-  IMAGE_NAME: aelf-launcher
+  IMAGE_NAME: aelf-test-node
   DOCKER_FILE: AElf.Launcher/AElf.Launcher/Dockerfile
 
 jobs:
