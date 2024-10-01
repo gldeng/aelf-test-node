@@ -9,16 +9,16 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["AElf.Launcher/AElf.Launcher.csproj", "AElf.Launcher/"]
 COPY ../NuGet.Config .
-RUN dotnet restore "AElf.Launcher/AElf.Launcher.csproj" -v d --configfile NuGet.Config
+RUN dotnet restore "AElf.Launcher/AElf.Launcher.csproj" --configfile NuGet.Config
 COPY . .
 WORKDIR "/src/AElf.Launcher"
 RUN dotnet build "AElf.Launcher.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-FROM build AS publish
+FROM --platform=$TARGETPLATFORM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "AElf.Launcher.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-FROM base AS final
+FROM --platform=$TARGETPLATFORM base AS final
 WORKDIR /app/AElf.Launcher
 COPY --from=publish /app/publish .
 
