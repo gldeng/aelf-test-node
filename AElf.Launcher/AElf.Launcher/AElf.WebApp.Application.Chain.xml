@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AElf.WebApp.Application.Chain</name>
+    </assembly>
+    <members>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.CalculateTransactionFeeInput.RawTransaction">
+            <summary>
+                raw transaction
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.CreateRawTransactionInput.From">
+            <summary>
+                from address
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.CreateRawTransactionInput.To">
+            <summary>
+                to address
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.CreateRawTransactionInput.RefBlockNumber">
+            <summary>
+                refer block height
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.CreateRawTransactionInput.RefBlockHash">
+            <summary>
+                refer block hash
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.CreateRawTransactionInput.MethodName">
+            <summary>
+                contract method name
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.CreateRawTransactionInput.Params">
+            <summary>
+                contract method parameters
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.ExecuteRawTransactionDto.RawTransaction">
+            <summary>
+                raw transaction
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.ExecuteRawTransactionDto.Signature">
+            <summary>
+                signature
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.ExecuteTransactionDto.RawTransaction">
+            <summary>
+                raw transaction
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.SendRawTransactionInput.Transaction">
+            <summary>
+                raw transaction
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.SendRawTransactionInput.Signature">
+            <summary>
+                signature
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.SendRawTransactionInput.ReturnTransaction">
+            <summary>
+                return transaction detail or not
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.SendTransactionInput.RawTransaction">
+            <summary>
+                raw transaction
+            </summary>
+        </member>
+        <member name="P:AElf.WebApp.Application.Chain.Dto.SendTransactionsInput.RawTransactions">
+            <summary>
+                raw transactions
+            </summary>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.BlockChainAppService.GetBlockHeightAsync">
+            <summary>
+                Get the height of the current chain.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.BlockChainAppService.GetBlockAsync(System.String,System.Boolean)">
+            <summary>
+                Get information about a given block by block hash. Otionally with the list of its transactions.
+            </summary>
+            <param name="blockHash">block hash</param>
+            <param name="includeTransactions">include transactions or not</param>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.BlockChainAppService.GetBlockByHeightAsync(System.Int64,System.Boolean)">
+            <summary>
+                Get information about a given block by block height. Optionally with the list of its transactions.
+            </summary>
+            <param name="blockHeight">block height</param>
+            <param name="includeTransactions">include transactions or not</param>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.BlockChainAppService.GetTransactionPoolStatusAsync">
+            <summary>
+                Get the transaction pool status.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.BlockChainAppService.GetBlockStateAsync(System.String)">
+            <summary>
+                Get the current state about a given block
+            </summary>
+            <param name="blockHash">block hash</param>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.ChainStatusAppService.GetChainStatusAsync">
+            <summary>
+                Get the current status of the block chain.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.ContractFileDescriptorSetAppService.GetContractFileDescriptorSetAsync(System.String)">
+            <summary>
+                Get the protobuf definitions related to a contract
+            </summary>
+            <param name="address">contract address</param>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.TransactionAppService.ExecuteTransactionAsync(AElf.WebApp.Application.Chain.Dto.ExecuteTransactionDto)">
+            <summary>
+                Call a read-only method on a contract.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.TransactionAppService.CreateRawTransactionAsync(AElf.WebApp.Application.Chain.Dto.CreateRawTransactionInput)">
+            <summary>
+                Creates an unsigned serialized transaction
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.TransactionAppService.SendRawTransactionAsync(AElf.WebApp.Application.Chain.Dto.SendRawTransactionInput)">
+            <summary>
+                send a transaction
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.TransactionAppService.SendTransactionAsync(AElf.WebApp.Application.Chain.Dto.SendTransactionInput)">
+            <summary>
+                Broadcast a transaction
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.TransactionAppService.SendTransactionsAsync(AElf.WebApp.Application.Chain.Dto.SendTransactionsInput)">
+            <summary>
+                Broadcast multiple transactions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.TransactionResultAppService.GetTransactionResultAsync(System.String)">
+            <summary>
+                Get the current status of a transaction
+            </summary>
+            <param name="transactionId">transaction id</param>
+            <returns></returns>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.TransactionResultAppService.GetTransactionResultsAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+                Get multiple transaction results.
+            </summary>
+            <param name="blockHash">block hash</param>
+            <param name="offset">offset</param>
+            <param name="limit">limit</param>
+            <returns></returns>
+            <exception cref="T:Volo.Abp.UserFriendlyException"></exception>
+        </member>
+        <member name="M:AElf.WebApp.Application.Chain.TransactionResultAppService.GetMerklePathByTransactionIdAsync(System.String)">
+            <summary>
+                Get the merkle path of a transaction.
+            </summary>
+            <param name="transactionId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AElf.WebApp.Application.Core</name>
+    </assembly>
+    <members>
+        <member name="T:AElf.WebApp.Application.CoreApplicationWebAppAElfModule">
+            <summary>
+                Add summary to disable 'Missing XML Comment' warning.
+            </summary>
+        </member>
+    </members>
+</doc>
