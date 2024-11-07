@@ -5,7 +5,7 @@
         <ServerGarbageCollection>true</ServerGarbageCollection>
     </PropertyGroup>
     <PropertyGroup>
-        <AelfVersion>1.7.0-preview.35</AelfVersion>
+        <AelfVersion>1.10.3.6-preview</AelfVersion>
     </PropertyGroup>
     <ItemGroup>
         <None Update="Dockerfile">
@@ -33,7 +33,7 @@
         <PackageReference Include="AElf.Contracts.Economic" Version="$(AelfVersion)"/>
         <PackageReference Include="AElf.Contracts.Election" Version="$(AelfVersion)"/>
         <PackageReference Include="AElf.Contracts.Genesis" Version="$(AelfVersion)"/>
-        <PackageReference Include="AElf.Contracts.GenesisUpdate" Version="$(AelfVersion)"/>
+<!--        <PackageReference Include="AElf.Contracts.GenesisUpdate" Version="$(AelfVersion)"/>-->
         <PackageReference Include="AElf.Contracts.MultiToken" Version="$(AelfVersion)"/>
         <PackageReference Include="AElf.Contracts.NFT" Version="$(AelfVersion)"/>
         <PackageReference Include="AElf.Contracts.Parliament" Version="$(AelfVersion)"/>
