@@ -4,9 +4,6 @@
         <TargetFramework>net8.0</TargetFramework>
         <ServerGarbageCollection>true</ServerGarbageCollection>
     </PropertyGroup>
-    <PropertyGroup>
-        <AelfVersion>1.10.3.6-preview</AelfVersion>
-    </PropertyGroup>
     <ItemGroup>
         <None Update="Dockerfile">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -91,6 +88,9 @@
         <Content Include="..\.dockerignore">
             <Link>.dockerignore</Link>
         </Content>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\AElf.Firehose\AElf.Firehose.csproj" />
     </ItemGroup>
 
 </Project>

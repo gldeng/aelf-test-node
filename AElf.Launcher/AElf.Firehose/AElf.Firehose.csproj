@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AElf.Kernel.Core" Version="$(AelfVersion)" />
+      <PackageReference Include="AElf.Kernel.SmartContractExecution" Version="1.10.3.6-preview" />
+      <PackageReference Include="AElf.WebApp.Application.Core" Version="$(AelfVersion)" />
+    </ItemGroup>
+
+</Project>

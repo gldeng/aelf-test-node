@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using AElf.Blockchains.MainChain;
 using AElf.Blockchains.SideChain;
+using AElf.Firehose;
 using AElf.Kernel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
@@ -66,6 +67,12 @@ public class Startup
                 if (_configuration["CorsOrigins"] != "*") builder.AllowCredentials();
             });
         });
+
+        // Check if Firehose is enabled in the configuration
+        if (_configuration.GetSection("Firehose").GetValue<bool>("Enabled"))
+        {
+            services.AddFirehose();
+        }
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
