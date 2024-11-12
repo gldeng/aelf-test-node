@@ -1,4 +1,5 @@
-﻿using AElf.Kernel;
+﻿using AElf.Firehose.Pb;
+using AElf.Kernel;
 using AElf.Kernel.Blockchain.Application;
 using AElf.Kernel.Blockchain.Events;
 using Google.Protobuf;
@@ -20,7 +21,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
     public FirehoseProcessor(IBlockchainService blockchainService)
     {
         _blockchainService = blockchainService;
-        Console.WriteLine($"FIRE INIT 3.0 {Block.Descriptor.FullName}");
+        Console.WriteLine($"FIRE INIT 3.0 {Pb.Block.Descriptor.FullName}");
     }
 
     public Task HandleEventAsync(BlockAcceptedEvent? eventData)
@@ -31,25 +32,9 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     public async Task HandleEventAsync(BlockAttachedEvent eventData)
     {
-        if (_acceptedEvent == null)
-        {
-            Console.WriteLine("FIRE EXCEPTION NO_ACCEPTED_EVENT");
-            return;
-        }
-
-        if (
-            // ReSharper disable once ComplexConditionExpression
-            _acceptedEvent.Block.Header.Height != eventData.Height ||
-            _acceptedEvent.Block.Header.GetHash() != eventData.Hash
-        )
-        {
-            _acceptedEvent = null;
-            Console.WriteLine("FIRE EXCEPTION DISCREPANCY");
-            return;
-        }
-
-        var blockPayloadBase64 = Convert.ToBase64String(_acceptedEvent.Block.ToByteArray());
-
+        var pbBlock = PreparePbBlock(eventData);
+        if (pbBlock == null) return;
+        var blockPayloadBase64 = Convert.ToBase64String(pbBlock.ToByteArray());
         // Convert DateTime to Unix time in nanoseconds
         var unixTimeNanos = (
             _acceptedEvent.Block.Header.Time.ToDateTime() -
@@ -68,5 +53,37 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
             blockPayloadBase64
         );
         Console.WriteLine(blockLine);
+    }
+
+    private Pb.Block? PreparePbBlock(BlockAttachedEvent eventData)
+    {
+        if (_acceptedEvent == null)
+        {
+            Console.WriteLine("FIRE EXCEPTION NO_ACCEPTED_EVENT");
+            return null;
+        }
+
+        if (
+            // ReSharper disable once ComplexConditionExpression
+            _acceptedEvent.Block.Header.Height != eventData.Height ||
+            _acceptedEvent.Block.Header.GetHash() != eventData.Hash
+        )
+        {
+            _acceptedEvent = null;
+            Console.WriteLine("FIRE EXCEPTION DISCREPANCY");
+            return null;
+        }
+
+        var pbBlock = Pb.Block.Parser.ParseFrom(_acceptedEvent.Block.ToByteArray());
+        pbBlock.FirehoseBody = new FirehoseBlockBody();
+        pbBlock.FirehoseBody.Transactions.AddRange(
+            _acceptedEvent.BlockExecutedSet.TransactionMap.Values.Select(
+                t => Pb.Transaction.Parser.ParseFrom(t.ToByteArray()))
+        );
+        pbBlock.FirehoseBody.TrasanctionResults.AddRange(
+            _acceptedEvent.BlockExecutedSet.TransactionResultMap.Values.Select(
+                ts => Pb.TransactionResult.Parser.ParseFrom(ts.ToByteArray()))
+        );
+        return pbBlock;
     }
 }
