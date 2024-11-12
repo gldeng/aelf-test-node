@@ -7,9 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AElf.Kernel.Core" Version="$(AelfVersion)" />
-      <PackageReference Include="AElf.Kernel.SmartContractExecution" Version="1.10.3.6-preview" />
-      <PackageReference Include="AElf.WebApp.Application.Core" Version="$(AelfVersion)" />
+        <PackageReference Include="AElf.Kernel.ChainController" Version="$(AelfVersion)" />
+        <PackageReference Include="AElf.Kernel.Core" Version="$(AelfVersion)"/>
+        <PackageReference Include="AElf.Kernel.SmartContractExecution" Version="$(AelfVersion)"/>
+        <PackageReference Include="AElf.WebApp.Application.Core" Version="$(AelfVersion)"/>
     </ItemGroup>
 
 </Project>
