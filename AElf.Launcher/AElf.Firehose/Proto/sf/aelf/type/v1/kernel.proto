@@ -96,6 +96,7 @@ message BlockHeader {
 message FirehoseBlockBody {
   repeated Transaction transactions = 1;
   repeated TransactionResult trasanction_results = 2;
+  repeated TransactionTrace transaction_traces = 3;
 }
 
 message BlockBody {

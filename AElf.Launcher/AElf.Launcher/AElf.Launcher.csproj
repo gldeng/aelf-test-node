@@ -11,6 +11,9 @@
         <None Update="appsettings.SideChain.MainNet.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Include="bin\Debug\net8.0\AElf.WebApp.Application.Chain.xml" />
+        <None Include="bin\Debug\net8.0\AElf.WebApp.Application.Core.xml" />
+        <None Include="bin\Debug\net8.0\AElf.WebApp.Application.Net.xml" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="AElf.Blockchains.MainChain" Version="$(AelfVersion)"/>
@@ -75,6 +78,7 @@
             <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+        <Content Include="bin\Debug\net8.0\Volo.Abp.BackgroundWorkers.dll" />
         <Content Include="W1ptWN5n5mfdVvh3khTRm9KMJCAUdge9txNyVtyvZaYRYcqc1.json">
             <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

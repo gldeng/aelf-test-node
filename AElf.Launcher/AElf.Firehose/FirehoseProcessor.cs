@@ -1,9 +1,14 @@
-﻿using AElf.Firehose.Pb;
+﻿using System.Collections.Concurrent;
+using AElf.Firehose.Pb;
 using AElf.Kernel;
 using AElf.Kernel.Blockchain.Application;
 using AElf.Kernel.Blockchain.Events;
+using AElf.Kernel.SmartContractExecution.Events;
 using Google.Protobuf;
+using Microsoft.Extensions.Logging;
 using Volo.Abp.EventBus;
+using Hash = AElf.Types.Hash;
+using TransactionTrace = AElf.Firehose.Pb.TransactionTrace;
 
 namespace AElf.Firehose;
 
@@ -13,14 +18,19 @@ namespace AElf.Firehose;
 /// only after the event is fired (hence we cannot get the correct LIB if we naively process
 /// <see cref="BlockAcceptedEvent"/>.
 /// </summary>
-public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalEventHandler<BlockAttachedEvent>
+public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalEventHandler<BlockAttachedEvent>,
+    ILocalEventHandler<TransactionExecutedEventData>
 {
     private BlockAcceptedEvent? _acceptedEvent = null;
     private readonly IBlockchainService _blockchainService;
+    private ConcurrentDictionary<AElf.Types.Hash, TransactionTrace> _transactionTraces;
+    private ILogger<FirehoseProcessor> _logger;
 
-    public FirehoseProcessor(IBlockchainService blockchainService)
+    public FirehoseProcessor(IBlockchainService blockchainService, ILogger<FirehoseProcessor> logger)
     {
         _blockchainService = blockchainService;
+        _logger = logger;
+        _transactionTraces = new ConcurrentDictionary<Hash, TransactionTrace>();
         Console.WriteLine($"FIRE INIT 3.0 {Pb.Block.Descriptor.FullName}");
     }
 
@@ -84,6 +94,18 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
             _acceptedEvent.BlockExecutedSet.TransactionResultMap.Values.Select(
                 ts => Pb.TransactionResult.Parser.ParseFrom(ts.ToByteArray()))
         );
+        // if (_acceptedEvent.Block.Height > 1)
+            pbBlock.FirehoseBody.TransactionTraces.AddRange(
+                _acceptedEvent.Block.TransactionIds.Select(txId => _transactionTraces[txId])
+            );
+        _transactionTraces.Clear();
         return pbBlock;
+    }
+
+    public Task HandleEventAsync(TransactionExecutedEventData eventData)
+    {
+        var transactionTrace = TransactionTrace.Parser.ParseFrom(eventData.TransactionTrace.ToByteArray());
+        _transactionTraces[eventData.TransactionTrace.TransactionId] = transactionTrace;
+        return Task.CompletedTask;
     }
 }
