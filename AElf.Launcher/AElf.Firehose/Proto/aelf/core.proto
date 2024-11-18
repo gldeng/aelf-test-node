@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package sf.aelf.type.v1;
+package aelf;
 
 option go_package = "github.com/streamingfast/firehose-acme/pb/aelf;pbacme";
 option csharp_namespace = "AElf.Firehose.Pb";
