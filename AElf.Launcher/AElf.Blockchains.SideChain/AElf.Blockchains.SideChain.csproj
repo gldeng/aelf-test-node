@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Description>Main module for a sidechain node.</Description>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <NoWarn>1701;1702</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="AElf.Blockchains.BasicBaseChain" Version="$(AelfVersion)"/>
+        <PackageReference Include="AElf.ContractDeployer" Version="$(AelfVersion)"/>
+        <PackageReference Include="AElf.CrossChain.Core" Version="$(AelfVersion)">
+            <Aliases>CrossChainCore</Aliases>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="AElf.Contracts.Consensus.AEDPoS" Version="$(AelfVersion)">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </PackageReference>
+        <PackageReference Include="AElf.Contracts.CrossChain" Version="$(AelfVersion)">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </PackageReference>
+        <PackageReference Include="AElf.Contracts.MultiToken" Version="$(AelfVersion)">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </PackageReference>
+        <PackageReference Include="AElf.Contracts.Parliament" Version="$(AelfVersion)">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </PackageReference>
+        <PackageReference Include="AElf.Contracts.Configuration" Version="$(AelfVersion)">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </PackageReference>
+        <PackageReference Include="AElf.Contracts.Referendum" Version="$(AelfVersion)">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </PackageReference>
+        <PackageReference Include="AElf.Contracts.Association" Version="$(AelfVersion)">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </PackageReference>
+        <PackageReference Include="AElf.Contracts.TokenHolder" Version="$(AelfVersion)">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </PackageReference>
+        <PackageReference Include="AElf.Contracts.Profit" Version="$(AelfVersion)">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </PackageReference>
+    </ItemGroup>
+</Project>
