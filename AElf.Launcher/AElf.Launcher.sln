@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElf.Launcher", "AElf.Launc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElf.Firehose", "AElf.Firehose\AElf.Firehose.csproj", "{E689C3F5-6C24-450B-B50F-3BA8B291E46E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElf.Blockchains.MainChain", "AElf.Blockchains.MainChain\AElf.Blockchains.MainChain.csproj", "{0C713B34-3175-4792-9F30-52E11514A56D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElf.Blockchains.SideChain", "AElf.Blockchains.SideChain\AElf.Blockchains.SideChain.csproj", "{0EB9F156-51A7-40E7-9B9B-D333206871D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{E689C3F5-6C24-450B-B50F-3BA8B291E46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E689C3F5-6C24-450B-B50F-3BA8B291E46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E689C3F5-6C24-450B-B50F-3BA8B291E46E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C713B34-3175-4792-9F30-52E11514A56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C713B34-3175-4792-9F30-52E11514A56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C713B34-3175-4792-9F30-52E11514A56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C713B34-3175-4792-9F30-52E11514A56D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EB9F156-51A7-40E7-9B9B-D333206871D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EB9F156-51A7-40E7-9B9B-D333206871D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EB9F156-51A7-40E7-9B9B-D333206871D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EB9F156-51A7-40E7-9B9B-D333206871D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <AelfVersion>1.10.2.5-preview</AelfVersion>
+        <AelfVersion>1.10.0</AelfVersion>
     </PropertyGroup>
 </Project>
