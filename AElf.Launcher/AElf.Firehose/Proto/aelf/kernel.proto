@@ -5,7 +5,7 @@ package aelf;
 import "google/protobuf/timestamp.proto";
 import "aelf/core.proto";
 
-option go_package = "github.com/streamingfast/firehose-acme/pb/aelf;pbacme";
+option go_package = "github.com/streamingfast/firehose-aelf/pb/aelf;aelf";
 option csharp_namespace = "AElf.Firehose.Pb";
 
 enum TransactionStatus {
