@@ -27,10 +27,14 @@ public class WrappedPlainTransactionExecutingService : PlainTransactionExecuting
         SingleTransactionExecutingDto singleTxExecutingDto,
         CancellationToken cancellationToken)
     {
+        var chainContext = new ChainContextWrapperForTrackingOriginalStateValue(singleTxExecutingDto.ChainContext);
+        singleTxExecutingDto.ChainContext = chainContext;
+
         var transactionTrace = await base.ExecuteOneAsync(singleTxExecutingDto, cancellationToken);
-        await _localEventBus.PublishAsync(new TransactionExecutedEventData()
+        await _localEventBus.PublishAsync(new ExtendedTransactionExecutedEventData()
         {
-            TransactionTrace = transactionTrace
+            TransactionTrace = transactionTrace,
+            OriginalValues = chainContext.OriginalValues
         });
         _logger.LogTrace("Executed transaction and published trace");
         return transactionTrace;

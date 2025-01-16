@@ -19,18 +19,18 @@ namespace AElf.Firehose;
 /// <see cref="BlockAcceptedEvent"/>.
 /// </summary>
 public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalEventHandler<BlockAttachedEvent>,
-    ILocalEventHandler<TransactionExecutedEventData>
+    ILocalEventHandler<ExtendedTransactionExecutedEventData>
 {
     private BlockAcceptedEvent? _acceptedEvent = null;
     private readonly IBlockchainService _blockchainService;
-    private ConcurrentDictionary<AElf.Types.Hash, TransactionTrace> _transactionTraces;
+    private ConcurrentDictionary<AElf.Types.Hash, ExtendedTransactionExecutedEventData> _transactionExecutedEventData;
     private ILogger<FirehoseProcessor> _logger;
 
     public FirehoseProcessor(IBlockchainService blockchainService, ILogger<FirehoseProcessor> logger)
     {
         _blockchainService = blockchainService;
         _logger = logger;
-        _transactionTraces = new ConcurrentDictionary<Hash, TransactionTrace>();
+        _transactionExecutedEventData = new ConcurrentDictionary<Hash, ExtendedTransactionExecutedEventData>();
         Console.WriteLine($"FIRE INIT 3.0 {Pb.Block.Descriptor.FullName}");
     }
 
@@ -95,17 +95,38 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
                 ts => Pb.TransactionResult.Parser.ParseFrom(ts.ToByteArray()))
         );
         // if (_acceptedEvent.Block.Height > 1)
-            pbBlock.FirehoseBody.TransactionTraces.AddRange(
-                _acceptedEvent.Block.TransactionIds.Select(txId => _transactionTraces[txId])
-            );
-        _transactionTraces.Clear();
+        pbBlock.FirehoseBody.TransactionTraces.AddRange(
+            _acceptedEvent.Block.TransactionIds.Select(
+                txId => Pb.TransactionTrace.Parser.ParseFrom(_transactionExecutedEventData[txId].TransactionTrace
+                    .ToByteArray())
+            )
+        );
+        pbBlock.FirehoseBody.InitialStates.AddRange(
+            _acceptedEvent.Block.TransactionIds.Select(
+                txId =>
+                {
+                    var state = new InitialStateSet();
+                    var originalValues = _transactionExecutedEventData[txId].OriginalValues;
+                    foreach (var kvp in originalValues
+                                 .Select(kvp => new
+                                 {
+                                     Key = kvp.Key.ToStateKey(), Value = kvp.Value
+                                 })
+                                 .OrderBy(kvp => kvp.Key))
+                    {
+                        state.Values.Add(kvp.Key, ByteString.CopyFrom(kvp.Value));
+                    }
+
+                    return state;
+                })
+        );
+        _transactionExecutedEventData.Clear();
         return pbBlock;
     }
 
-    public Task HandleEventAsync(TransactionExecutedEventData eventData)
+    public Task HandleEventAsync(ExtendedTransactionExecutedEventData eventData)
     {
-        var transactionTrace = TransactionTrace.Parser.ParseFrom(eventData.TransactionTrace.ToByteArray());
-        _transactionTraces[eventData.TransactionTrace.TransactionId] = transactionTrace;
+        _transactionExecutedEventData[eventData.TransactionTrace.TransactionId] = eventData;
         return Task.CompletedTask;
     }
 }

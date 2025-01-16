@@ -93,10 +93,15 @@ message BlockHeader {
   bytes signature = 10000;
 }
 
+message StateSet {
+  map<string, bytes> values = 1;
+}
+
 message FirehoseBlockBody {
   repeated Transaction transactions = 1;
   repeated TransactionResult trasanction_results = 2;
   repeated TransactionTrace transaction_traces = 3;
+  repeated StateSet initial_states = 4;
 }
 
 message BlockBody {

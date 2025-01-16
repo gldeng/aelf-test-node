@@ -64,67 +64,71 @@ namespace AElf.Firehose.Pb {
             "Z2xlLnByb3RvYnVmLlRpbWVzdGFtcBI6CiZtZXJrbGVfdHJlZV9yb290X29m",
             "X3RyYW5zYWN0aW9uX3N0YXR1cxgKIAEoCzIKLmFlbGYuSGFzaBIWCg1zaWdu",
             "ZXJfcHVia2V5GI9OIAEoDBISCglzaWduYXR1cmUYkE4gASgMGjAKDkV4dHJh",
-            "RGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoDDoCOAEipgEK",
-            "EUZpcmVob3NlQmxvY2tCb2R5EicKDHRyYW5zYWN0aW9ucxgBIAMoCzIRLmFl",
-            "bGYuVHJhbnNhY3Rpb24SNAoTdHJhc2FuY3Rpb25fcmVzdWx0cxgCIAMoCzIX",
-            "LmFlbGYuVHJhbnNhY3Rpb25SZXN1bHQSMgoSdHJhbnNhY3Rpb25fdHJhY2Vz",
-            "GAMgAygLMhYuYWVsZi5UcmFuc2FjdGlvblRyYWNlIjAKCUJsb2NrQm9keRIj",
-            "Cg90cmFuc2FjdGlvbl9pZHMYASADKAsyCi5hZWxmLkhhc2giegoFQmxvY2sS",
-            "IQoGaGVhZGVyGAEgASgLMhEuYWVsZi5CbG9ja0hlYWRlchIdCgRib2R5GAIg",
-            "ASgLMg8uYWVsZi5CbG9ja0JvZHkSLwoNZmlyZWhvc2VfYm9keRjZNiABKAsy",
-            "Fy5hZWxmLkZpcmVob3NlQmxvY2tCb2R5IokBCg5WZXJzaW9uZWRTdGF0ZRIL",
-            "CgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAwSFAoMYmxvY2tfaGVpZ2h0GAMg",
-            "ASgDEh4KCmJsb2NrX2hhc2gYBCABKAsyCi5hZWxmLkhhc2gSJQoRb3JpZ2lu",
-            "X2Jsb2NrX2hhc2gYBSABKAsyCi5hZWxmLkhhc2gi3wIKDUJsb2NrU3RhdGVT",
-            "ZXQSHgoKYmxvY2tfaGFzaBgBIAEoCzIKLmFlbGYuSGFzaBIhCg1wcmV2aW91",
-            "c19oYXNoGAIgASgLMgouYWVsZi5IYXNoEhQKDGJsb2NrX2hlaWdodBgDIAEo",
-            "AxIxCgdjaGFuZ2VzGAQgAygLMiAuYWVsZi5CbG9ja1N0YXRlU2V0LkNoYW5n",
-            "ZXNFbnRyeRIPCgdkZWxldGVzGAUgAygJEkcKE2Jsb2NrX2V4ZWN1dGVkX2Rh",
-            "dGEYBiADKAsyKi5hZWxmLkJsb2NrU3RhdGVTZXQuQmxvY2tFeGVjdXRlZERh",
-            "dGFFbnRyeRouCgxDaGFuZ2VzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVl",
-            "GAIgASgMOgI4ARo4ChZCbG9ja0V4ZWN1dGVkRGF0YUVudHJ5EgsKA2tleRgB",
-            "IAEoCRINCgV2YWx1ZRgCIAEoDDoCOAEirwEKDkNoYWluU3RhdGVJbmZvEhAK",
-            "CGNoYWluX2lkGAEgASgFEh4KCmJsb2NrX2hhc2gYAiABKAsyCi5hZWxmLkhh",
-            "c2gSFAoMYmxvY2tfaGVpZ2h0GAMgASgDEiYKEm1lcmdpbmdfYmxvY2tfaGFz",
-            "aBgEIAEoCzIKLmFlbGYuSGFzaBItCgZzdGF0dXMYBSABKA4yHS5hZWxmLkNo",
-            "YWluU3RhdGVNZXJnaW5nU3RhdHVzIvIBCg5DaGFpbkJsb2NrTGluaxIeCgpi",
-            "bG9ja19oYXNoGAEgASgLMgouYWVsZi5IYXNoEg4KBmhlaWdodBgCIAEoAxIn",
-            "ChNwcmV2aW91c19ibG9ja19oYXNoGAMgASgLMgouYWVsZi5IYXNoEj0KEGV4",
-            "ZWN1dGlvbl9zdGF0dXMYBCABKA4yIy5hZWxmLkNoYWluQmxvY2tMaW5rRXhl",
-            "Y3V0aW9uU3RhdHVzEh0KFWlzX2lycmV2ZXJzaWJsZV9ibG9jaxgFIAEoCBIR",
-            "Cglpc19saW5rZWQYBiABKAgSFgoOaXNfbGlnaHRfYmxvY2sYByABKAgi7gMK",
-            "BUNoYWluEgoKAmlkGAEgASgFEiYKEmdlbmVzaXNfYmxvY2tfaGFzaBgCIAEo",
-            "CzIKLmFlbGYuSGFzaBImChJsb25nZXN0X2NoYWluX2hhc2gYAyABKAsyCi5h",
-            "ZWxmLkhhc2gSHAoUbG9uZ2VzdF9jaGFpbl9oZWlnaHQYBCABKAMSKwoIYnJh",
-            "bmNoZXMYBSADKAsyGS5hZWxmLkNoYWluLkJyYW5jaGVzRW50cnkSOwoRbm90",
-            "X2xpbmtlZF9ibG9ja3MYBiADKAsyIC5hZWxmLkNoYWluLk5vdExpbmtlZEJs",
-            "b2Nrc0VudHJ5EjAKHGxhc3RfaXJyZXZlcnNpYmxlX2Jsb2NrX2hhc2gYByAB",
-            "KAsyCi5hZWxmLkhhc2gSJgoebGFzdF9pcnJldmVyc2libGVfYmxvY2tfaGVp",
-            "Z2h0GAggASgDEiMKD2Jlc3RfY2hhaW5faGFzaBgJIAEoCzIKLmFlbGYuSGFz",
-            "aBIZChFiZXN0X2NoYWluX2hlaWdodBgKIAEoAxovCg1CcmFuY2hlc0VudHJ5",
-            "EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoAzoCOAEaNgoUTm90TGlua2Vk",
-            "QmxvY2tzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASIx",
-            "Cg9DaGFpbkJsb2NrSW5kZXgSHgoKYmxvY2tfaGFzaBgBIAEoCzIKLmFlbGYu",
-            "SGFzaCJCCgpCbG9ja0luZGV4Eh4KCmJsb2NrX2hhc2gYASABKAsyCi5hZWxm",
-            "Lkhhc2gSFAoMYmxvY2tfaGVpZ2h0GAIgASgDIowBChVUcmFuc2FjdGlvbkJs",
-            "b2NrSW5kZXgSHgoKYmxvY2tfaGFzaBgBIAEoCzIKLmFlbGYuSGFzaBIUCgxi",
-            "bG9ja19oZWlnaHQYAiABKAMSPQojcHJldmlvdXNfZXhlY3V0aW9uX2Jsb2Nr",
-            "X2luZGV4X2xpc3QYAyADKAsyEC5hZWxmLkJsb2NrSW5kZXgibAoUU21hcnRD",
-            "b250cmFjdEFkZHJlc3MSHgoHYWRkcmVzcxgBIAEoCzINLmFlbGYuQWRkcmVz",
-            "cxIeCgpibG9ja19oYXNoGAIgASgLMgouYWVsZi5IYXNoEhQKDGJsb2NrX2hl",
-            "aWdodBgDIAEoAypoChFUcmFuc2FjdGlvblN0YXR1cxIeChpVTktOT1dOX1RS",
-            "QU5TQUNUSU9OX1NUQVRVUxAAEhkKFVRSQU5TQUNUSU9OX0VYRUNVVElORxAB",
-            "EhgKFFRSQU5TQUNUSU9OX0VYRUNVVEVEEAIq1AEKD0V4ZWN1dGlvblN0YXR1",
-            "cxINCglVTkRFRklORUQQABIMCghFWEVDVVRFRBABEhUKCENBTkNFTEVEEP//",
-            "/////////wESGQoMU1lTVEVNX0VSUk9SEP7//////////wESGwoOQ09OVFJB",
-            "Q1RfRVJST1IQ9v//////////ARIkChdFWENFRURFRF9NQVhfQ0FMTF9ERVBU",
-            "SBD1//////////8BEhYKCVBSRUZBSUxFRBCd//////////8BEhcKClBPU1RG",
-            "QUlMRUQQuf7/////////ASo+ChdDaGFpblN0YXRlTWVyZ2luZ1N0YXR1cxIK",
-            "CgZDT01NT04QABILCgdNRVJHSU5HEAESCgoGTUVSR0VEEAIqYAodQ2hhaW5C",
-            "bG9ja0xpbmtFeGVjdXRpb25TdGF0dXMSEgoORVhFQ1VUSU9OX05PTkUQABIV",
-            "ChFFWEVDVVRJT05fU1VDQ0VTUxABEhQKEEVYRUNVVElPTl9GQUlMRUQQAkJK",
-            "WjVnaXRodWIuY29tL3N0cmVhbWluZ2Zhc3QvZmlyZWhvc2UtYWNtZS9wYi9h",
-            "ZWxmO3BiYWNtZaoCEEFFbGYuRmlyZWhvc2UuUGJiBnByb3RvMw=="));
+            "RGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoDDoCOAEicwoP",
+            "SW5pdGlhbFN0YXRlU2V0EjEKBnZhbHVlcxgBIAMoCzIhLmFlbGYuSW5pdGlh",
+            "bFN0YXRlU2V0LlZhbHVlc0VudHJ5Gi0KC1ZhbHVlc0VudHJ5EgsKA2tleRgB",
+            "IAEoCRINCgV2YWx1ZRgCIAEoDDoCOAEi1QEKEUZpcmVob3NlQmxvY2tCb2R5",
+            "EicKDHRyYW5zYWN0aW9ucxgBIAMoCzIRLmFlbGYuVHJhbnNhY3Rpb24SNAoT",
+            "dHJhc2FuY3Rpb25fcmVzdWx0cxgCIAMoCzIXLmFlbGYuVHJhbnNhY3Rpb25S",
+            "ZXN1bHQSMgoSdHJhbnNhY3Rpb25fdHJhY2VzGAMgAygLMhYuYWVsZi5UcmFu",
+            "c2FjdGlvblRyYWNlEi0KDmluaXRpYWxfc3RhdGVzGAQgAygLMhUuYWVsZi5J",
+            "bml0aWFsU3RhdGVTZXQiMAoJQmxvY2tCb2R5EiMKD3RyYW5zYWN0aW9uX2lk",
+            "cxgBIAMoCzIKLmFlbGYuSGFzaCJ6CgVCbG9jaxIhCgZoZWFkZXIYASABKAsy",
+            "ES5hZWxmLkJsb2NrSGVhZGVyEh0KBGJvZHkYAiABKAsyDy5hZWxmLkJsb2Nr",
+            "Qm9keRIvCg1maXJlaG9zZV9ib2R5GNk2IAEoCzIXLmFlbGYuRmlyZWhvc2VC",
+            "bG9ja0JvZHkiiQEKDlZlcnNpb25lZFN0YXRlEgsKA2tleRgBIAEoCRINCgV2",
+            "YWx1ZRgCIAEoDBIUCgxibG9ja19oZWlnaHQYAyABKAMSHgoKYmxvY2tfaGFz",
+            "aBgEIAEoCzIKLmFlbGYuSGFzaBIlChFvcmlnaW5fYmxvY2tfaGFzaBgFIAEo",
+            "CzIKLmFlbGYuSGFzaCLfAgoNQmxvY2tTdGF0ZVNldBIeCgpibG9ja19oYXNo",
+            "GAEgASgLMgouYWVsZi5IYXNoEiEKDXByZXZpb3VzX2hhc2gYAiABKAsyCi5h",
+            "ZWxmLkhhc2gSFAoMYmxvY2tfaGVpZ2h0GAMgASgDEjEKB2NoYW5nZXMYBCAD",
+            "KAsyIC5hZWxmLkJsb2NrU3RhdGVTZXQuQ2hhbmdlc0VudHJ5Eg8KB2RlbGV0",
+            "ZXMYBSADKAkSRwoTYmxvY2tfZXhlY3V0ZWRfZGF0YRgGIAMoCzIqLmFlbGYu",
+            "QmxvY2tTdGF0ZVNldC5CbG9ja0V4ZWN1dGVkRGF0YUVudHJ5Gi4KDENoYW5n",
+            "ZXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAw6AjgBGjgKFkJs",
+            "b2NrRXhlY3V0ZWREYXRhRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIg",
+            "ASgMOgI4ASKvAQoOQ2hhaW5TdGF0ZUluZm8SEAoIY2hhaW5faWQYASABKAUS",
+            "HgoKYmxvY2tfaGFzaBgCIAEoCzIKLmFlbGYuSGFzaBIUCgxibG9ja19oZWln",
+            "aHQYAyABKAMSJgoSbWVyZ2luZ19ibG9ja19oYXNoGAQgASgLMgouYWVsZi5I",
+            "YXNoEi0KBnN0YXR1cxgFIAEoDjIdLmFlbGYuQ2hhaW5TdGF0ZU1lcmdpbmdT",
+            "dGF0dXMi8gEKDkNoYWluQmxvY2tMaW5rEh4KCmJsb2NrX2hhc2gYASABKAsy",
+            "Ci5hZWxmLkhhc2gSDgoGaGVpZ2h0GAIgASgDEicKE3ByZXZpb3VzX2Jsb2Nr",
+            "X2hhc2gYAyABKAsyCi5hZWxmLkhhc2gSPQoQZXhlY3V0aW9uX3N0YXR1cxgE",
+            "IAEoDjIjLmFlbGYuQ2hhaW5CbG9ja0xpbmtFeGVjdXRpb25TdGF0dXMSHQoV",
+            "aXNfaXJyZXZlcnNpYmxlX2Jsb2NrGAUgASgIEhEKCWlzX2xpbmtlZBgGIAEo",
+            "CBIWCg5pc19saWdodF9ibG9jaxgHIAEoCCLuAwoFQ2hhaW4SCgoCaWQYASAB",
+            "KAUSJgoSZ2VuZXNpc19ibG9ja19oYXNoGAIgASgLMgouYWVsZi5IYXNoEiYK",
+            "Emxvbmdlc3RfY2hhaW5faGFzaBgDIAEoCzIKLmFlbGYuSGFzaBIcChRsb25n",
+            "ZXN0X2NoYWluX2hlaWdodBgEIAEoAxIrCghicmFuY2hlcxgFIAMoCzIZLmFl",
+            "bGYuQ2hhaW4uQnJhbmNoZXNFbnRyeRI7ChFub3RfbGlua2VkX2Jsb2NrcxgG",
+            "IAMoCzIgLmFlbGYuQ2hhaW4uTm90TGlua2VkQmxvY2tzRW50cnkSMAocbGFz",
+            "dF9pcnJldmVyc2libGVfYmxvY2tfaGFzaBgHIAEoCzIKLmFlbGYuSGFzaBIm",
+            "Ch5sYXN0X2lycmV2ZXJzaWJsZV9ibG9ja19oZWlnaHQYCCABKAMSIwoPYmVz",
+            "dF9jaGFpbl9oYXNoGAkgASgLMgouYWVsZi5IYXNoEhkKEWJlc3RfY2hhaW5f",
+            "aGVpZ2h0GAogASgDGi8KDUJyYW5jaGVzRW50cnkSCwoDa2V5GAEgASgJEg0K",
+            "BXZhbHVlGAIgASgDOgI4ARo2ChROb3RMaW5rZWRCbG9ja3NFbnRyeRILCgNr",
+            "ZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIjEKD0NoYWluQmxvY2tJbmRl",
+            "eBIeCgpibG9ja19oYXNoGAEgASgLMgouYWVsZi5IYXNoIkIKCkJsb2NrSW5k",
+            "ZXgSHgoKYmxvY2tfaGFzaBgBIAEoCzIKLmFlbGYuSGFzaBIUCgxibG9ja19o",
+            "ZWlnaHQYAiABKAMijAEKFVRyYW5zYWN0aW9uQmxvY2tJbmRleBIeCgpibG9j",
+            "a19oYXNoGAEgASgLMgouYWVsZi5IYXNoEhQKDGJsb2NrX2hlaWdodBgCIAEo",
+            "AxI9CiNwcmV2aW91c19leGVjdXRpb25fYmxvY2tfaW5kZXhfbGlzdBgDIAMo",
+            "CzIQLmFlbGYuQmxvY2tJbmRleCJsChRTbWFydENvbnRyYWN0QWRkcmVzcxIe",
+            "CgdhZGRyZXNzGAEgASgLMg0uYWVsZi5BZGRyZXNzEh4KCmJsb2NrX2hhc2gY",
+            "AiABKAsyCi5hZWxmLkhhc2gSFAoMYmxvY2tfaGVpZ2h0GAMgASgDKmgKEVRy",
+            "YW5zYWN0aW9uU3RhdHVzEh4KGlVOS05PV05fVFJBTlNBQ1RJT05fU1RBVFVT",
+            "EAASGQoVVFJBTlNBQ1RJT05fRVhFQ1VUSU5HEAESGAoUVFJBTlNBQ1RJT05f",
+            "RVhFQ1VURUQQAirUAQoPRXhlY3V0aW9uU3RhdHVzEg0KCVVOREVGSU5FRBAA",
+            "EgwKCEVYRUNVVEVEEAESFQoIQ0FOQ0VMRUQQ////////////ARIZCgxTWVNU",
+            "RU1fRVJST1IQ/v//////////ARIbCg5DT05UUkFDVF9FUlJPUhD2////////",
+            "//8BEiQKF0VYQ0VFREVEX01BWF9DQUxMX0RFUFRIEPX//////////wESFgoJ",
+            "UFJFRkFJTEVEEJ3//////////wESFwoKUE9TVEZBSUxFRBC5/v////////8B",
+            "Kj4KF0NoYWluU3RhdGVNZXJnaW5nU3RhdHVzEgoKBkNPTU1PThAAEgsKB01F",
+            "UkdJTkcQARIKCgZNRVJHRUQQAipgCh1DaGFpbkJsb2NrTGlua0V4ZWN1dGlv",
+            "blN0YXR1cxISCg5FWEVDVVRJT05fTk9ORRAAEhUKEUVYRUNVVElPTl9TVUND",
+            "RVNTEAESFAoQRVhFQ1VUSU9OX0ZBSUxFRBACQkpaNWdpdGh1Yi5jb20vc3Ry",
+            "ZWFtaW5nZmFzdC9maXJlaG9zZS1hY21lL3BiL2FlbGY7cGJhY21lqgIQQUVs",
+            "Zi5GaXJlaG9zZS5QYmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::AElf.Firehose.Pb.CoreReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::AElf.Firehose.Pb.TransactionStatus), typeof(global::AElf.Firehose.Pb.ExecutionStatus), typeof(global::AElf.Firehose.Pb.ChainStateMergingStatus), typeof(global::AElf.Firehose.Pb.ChainBlockLinkExecutionStatus), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -134,7 +138,8 @@ namespace AElf.Firehose.Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::AElf.Firehose.Pb.ExecutionReturnSet), global::AElf.Firehose.Pb.ExecutionReturnSet.Parser, new[]{ "TransactionId", "Status", "StateChanges", "StateAccesses", "Bloom", "ReturnValue", "StateDeletes", "TransactionResult" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::AElf.Firehose.Pb.BlockHeaderList), global::AElf.Firehose.Pb.BlockHeaderList.Parser, new[]{ "Headers" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::AElf.Firehose.Pb.BlockHeader), global::AElf.Firehose.Pb.BlockHeader.Parser, new[]{ "Version", "ChainId", "PreviousBlockHash", "MerkleTreeRootOfTransactions", "MerkleTreeRootOfWorldState", "Bloom", "Height", "ExtraData", "Time", "MerkleTreeRootOfTransactionStatus", "SignerPubkey", "Signature" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::AElf.Firehose.Pb.FirehoseBlockBody), global::AElf.Firehose.Pb.FirehoseBlockBody.Parser, new[]{ "Transactions", "TrasanctionResults", "TransactionTraces" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::AElf.Firehose.Pb.InitialStateSet), global::AElf.Firehose.Pb.InitialStateSet.Parser, new[]{ "Values" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::AElf.Firehose.Pb.FirehoseBlockBody), global::AElf.Firehose.Pb.FirehoseBlockBody.Parser, new[]{ "Transactions", "TrasanctionResults", "TransactionTraces", "InitialStates" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::AElf.Firehose.Pb.BlockBody), global::AElf.Firehose.Pb.BlockBody.Parser, new[]{ "TransactionIds" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::AElf.Firehose.Pb.Block), global::AElf.Firehose.Pb.Block.Parser, new[]{ "Header", "Body", "FirehoseBody" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::AElf.Firehose.Pb.VersionedState), global::AElf.Firehose.Pb.VersionedState.Parser, new[]{ "Key", "Value", "BlockHeight", "BlockHash", "OriginBlockHash" }, null, null, null, null),
@@ -2489,6 +2494,184 @@ namespace AElf.Firehose.Pb {
 
   }
 
+  public sealed partial class InitialStateSet : pb::IMessage<InitialStateSet>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<InitialStateSet> _parser = new pb::MessageParser<InitialStateSet>(() => new InitialStateSet());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<InitialStateSet> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public InitialStateSet() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public InitialStateSet(InitialStateSet other) : this() {
+      values_ = other.values_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public InitialStateSet Clone() {
+      return new InitialStateSet(this);
+    }
+
+    /// <summary>Field number for the "values" field.</summary>
+    public const int ValuesFieldNumber = 1;
+    private static readonly pbc::MapField<string, pb::ByteString>.Codec _map_values_codec
+        = new pbc::MapField<string, pb::ByteString>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForBytes(18, pb::ByteString.Empty), 10);
+    private readonly pbc::MapField<string, pb::ByteString> values_ = new pbc::MapField<string, pb::ByteString>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, pb::ByteString> Values {
+      get { return values_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as InitialStateSet);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(InitialStateSet other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!Values.Equals(other.Values)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= Values.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      values_.WriteTo(output, _map_values_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      values_.WriteTo(ref output, _map_values_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += values_.CalculateSize(_map_values_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(InitialStateSet other) {
+      if (other == null) {
+        return;
+      }
+      values_.Add(other.values_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            values_.AddEntriesFrom(input, _map_values_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            values_.AddEntriesFrom(ref input, _map_values_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class FirehoseBlockBody : pb::IMessage<FirehoseBlockBody>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2503,7 +2686,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[6]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2526,6 +2709,7 @@ namespace AElf.Firehose.Pb {
       transactions_ = other.transactions_.Clone();
       trasanctionResults_ = other.trasanctionResults_.Clone();
       transactionTraces_ = other.transactionTraces_.Clone();
+      initialStates_ = other.initialStates_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2568,6 +2752,17 @@ namespace AElf.Firehose.Pb {
       get { return transactionTraces_; }
     }
 
+    /// <summary>Field number for the "initial_states" field.</summary>
+    public const int InitialStatesFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::AElf.Firehose.Pb.InitialStateSet> _repeated_initialStates_codec
+        = pb::FieldCodec.ForMessage(34, global::AElf.Firehose.Pb.InitialStateSet.Parser);
+    private readonly pbc::RepeatedField<global::AElf.Firehose.Pb.InitialStateSet> initialStates_ = new pbc::RepeatedField<global::AElf.Firehose.Pb.InitialStateSet>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::AElf.Firehose.Pb.InitialStateSet> InitialStates {
+      get { return initialStates_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2586,6 +2781,7 @@ namespace AElf.Firehose.Pb {
       if(!transactions_.Equals(other.transactions_)) return false;
       if(!trasanctionResults_.Equals(other.trasanctionResults_)) return false;
       if(!transactionTraces_.Equals(other.transactionTraces_)) return false;
+      if(!initialStates_.Equals(other.initialStates_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2596,6 +2792,7 @@ namespace AElf.Firehose.Pb {
       hash ^= transactions_.GetHashCode();
       hash ^= trasanctionResults_.GetHashCode();
       hash ^= transactionTraces_.GetHashCode();
+      hash ^= initialStates_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2617,6 +2814,7 @@ namespace AElf.Firehose.Pb {
       transactions_.WriteTo(output, _repeated_transactions_codec);
       trasanctionResults_.WriteTo(output, _repeated_trasanctionResults_codec);
       transactionTraces_.WriteTo(output, _repeated_transactionTraces_codec);
+      initialStates_.WriteTo(output, _repeated_initialStates_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2630,6 +2828,7 @@ namespace AElf.Firehose.Pb {
       transactions_.WriteTo(ref output, _repeated_transactions_codec);
       trasanctionResults_.WriteTo(ref output, _repeated_trasanctionResults_codec);
       transactionTraces_.WriteTo(ref output, _repeated_transactionTraces_codec);
+      initialStates_.WriteTo(ref output, _repeated_initialStates_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2643,6 +2842,7 @@ namespace AElf.Firehose.Pb {
       size += transactions_.CalculateSize(_repeated_transactions_codec);
       size += trasanctionResults_.CalculateSize(_repeated_trasanctionResults_codec);
       size += transactionTraces_.CalculateSize(_repeated_transactionTraces_codec);
+      size += initialStates_.CalculateSize(_repeated_initialStates_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2658,6 +2858,7 @@ namespace AElf.Firehose.Pb {
       transactions_.Add(other.transactions_);
       trasanctionResults_.Add(other.trasanctionResults_);
       transactionTraces_.Add(other.transactionTraces_);
+      initialStates_.Add(other.initialStates_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2683,6 +2884,10 @@ namespace AElf.Firehose.Pb {
           }
           case 26: {
             transactionTraces_.AddEntriesFrom(input, _repeated_transactionTraces_codec);
+            break;
+          }
+          case 34: {
+            initialStates_.AddEntriesFrom(input, _repeated_initialStates_codec);
             break;
           }
         }
@@ -2712,6 +2917,10 @@ namespace AElf.Firehose.Pb {
             transactionTraces_.AddEntriesFrom(ref input, _repeated_transactionTraces_codec);
             break;
           }
+          case 34: {
+            initialStates_.AddEntriesFrom(ref input, _repeated_initialStates_codec);
+            break;
+          }
         }
       }
     }
@@ -2733,7 +2942,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[7]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2911,7 +3120,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[8]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3201,7 +3410,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[9]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3556,7 +3765,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[10]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3915,7 +4124,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[11]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4270,7 +4479,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[12]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4702,7 +4911,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[13]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5238,7 +5447,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[14]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5436,7 +5645,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[15]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5671,7 +5880,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[16]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5932,7 +6141,7 @@ namespace AElf.Firehose.Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[17]; }
+      get { return global::AElf.Firehose.Pb.KernelReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
