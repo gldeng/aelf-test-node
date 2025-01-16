@@ -73,6 +73,12 @@ public class Startup
         {
             services.AddFirehose();
         }
+
+        foreach (var service in services)
+        {
+            Console.WriteLine(
+                $"Service: {service.ServiceType.FullName}, Implementation: {service.ImplementationType?.FullName}, Lifetime: {service.Lifetime}");
+        }
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
