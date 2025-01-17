@@ -114,7 +114,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
                                  })
                                  .OrderBy(kvp => kvp.Key))
                     {
-                        state.Values.Add(kvp.Key, ByteString.CopyFrom(kvp.Value));
+                        state.Values.Add(kvp.Key, ByteString.CopyFrom(kvp.Value ?? new byte[0]));
                     }
 
                     return state;
