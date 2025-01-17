@@ -28,7 +28,11 @@ public class StateCacheProxy : IStateCache
 
     public byte[] this[ScopedStatePath key]
     {
-        set => _inner[key] = value;
+        set
+        {
+            _originalValues.TryAdd(key, value);
+            _inner[key] = value;
+        }
     }
 
     public Dictionary<ScopedStatePath, byte[]> OriginalValues => _originalValues;
