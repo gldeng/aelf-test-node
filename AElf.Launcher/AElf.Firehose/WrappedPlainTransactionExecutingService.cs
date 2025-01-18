@@ -23,6 +23,7 @@ public class WrappedPlainTransactionExecutingService : PlainTransactionExecuting
         ILocalEventBus localEventBus, ILogger<WrappedPlainTransactionExecutingService> logger) : base(
         smartContractExecutiveService, postPlugins, prePlugins, transactionContextFactory, featureDisableService)
     {
+        _options = options.Value;
         _localEventBus = localEventBus;
         _logger = logger;
     }
