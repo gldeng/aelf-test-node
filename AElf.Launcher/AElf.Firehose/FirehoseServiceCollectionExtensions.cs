@@ -9,7 +9,8 @@ namespace AElf.Firehose;
 
 public static class FirehoseServiceCollectionExtensions
 {
-    public static IServiceCollection AddFirehose(this IServiceCollection services)
+    public static IServiceCollection AddFirehose(this IServiceCollection services,
+        Action<FirehoseOptions>? setupAction = null)
     {
         services.AddSingleton<ILocalEventHandler<BlockAcceptedEvent>, FirehoseProcessor>();
         services.AddSingleton<ILocalEventHandler<BlockAttachedEvent>, FirehoseProcessor>();
@@ -29,6 +30,8 @@ public static class FirehoseServiceCollectionExtensions
                  x.ServiceType == typeof(IPlainTransactionExecutingService)
         );
         services.AddSingleton<IPlainTransactionExecutingService, WrappedPlainTransactionExecutingService>();
+        if (setupAction != null)
+            services.Configure(setupAction);
         return services;
     }
 }

@@ -71,7 +71,14 @@ public class Startup
         // Check if Firehose is enabled in the configuration
         if (_configuration.GetSection("Firehose").GetValue<bool>("Enabled"))
         {
-            services.AddFirehose();
+            if (_configuration.GetSection("Firehose").GetValue<bool>("EnableInitialStateTracking"))
+            {
+                services.AddFirehose(options => options.EnableInitialStateTracking());
+            }
+            else
+            {
+                services.AddFirehose();
+            }
         }
 
         foreach (var service in services)
