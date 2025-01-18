@@ -21,15 +21,18 @@ namespace AElf.Firehose;
 public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalEventHandler<BlockAttachedEvent>,
     ILocalEventHandler<ExtendedTransactionExecutedEventData>
 {
+    private readonly FirehoseOptions _options;
     private BlockAcceptedEvent? _acceptedEvent = null;
     private readonly IBlockchainService _blockchainService;
     private ConcurrentDictionary<AElf.Types.Hash, ExtendedTransactionExecutedEventData> _transactionExecutedEventData;
     private ILogger<FirehoseProcessor> _logger;
 
-    public FirehoseProcessor(IBlockchainService blockchainService, ILogger<FirehoseProcessor> logger)
+    public FirehoseProcessor(FirehoseOptions options, IBlockchainService blockchainService,
+        ILogger<FirehoseProcessor> logger)
     {
         _blockchainService = blockchainService;
         _logger = logger;
+        _options = options;
         _transactionExecutedEventData = new ConcurrentDictionary<Hash, ExtendedTransactionExecutedEventData>();
         Console.WriteLine($"FIRE INIT 3.0 {Pb.Block.Descriptor.FullName}");
     }
@@ -101,25 +104,29 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
                     .ToByteArray())
             )
         );
-        pbBlock.FirehoseBody.InitialStates.AddRange(
-            _acceptedEvent.Block.TransactionIds.Select(
-                txId =>
-                {
-                    var state = new InitialStateSet();
-                    var originalValues = _transactionExecutedEventData[txId].OriginalValues;
-                    foreach (var kvp in originalValues
-                                 .Select(kvp => new
-                                 {
-                                     Key = kvp.Key.ToStateKey(), Value = kvp.Value
-                                 })
-                                 .OrderBy(kvp => kvp.Key))
+        if (_options.WithInitialStateTracking)
+        {
+            pbBlock.FirehoseBody.InitialStates.AddRange(
+                _acceptedEvent.Block.TransactionIds.Select(
+                    txId =>
                     {
-                        state.Values.Add(kvp.Key, ByteString.CopyFrom(kvp.Value ?? new byte[0]));
-                    }
+                        var state = new InitialStateSet();
+                        var originalValues = _transactionExecutedEventData[txId].OriginalValues;
+                        foreach (var kvp in originalValues
+                                     .Select(kvp => new
+                                     {
+                                         Key = kvp.Key.ToStateKey(), Value = kvp.Value
+                                     })
+                                     .OrderBy(kvp => kvp.Key))
+                        {
+                            state.Values.Add(kvp.Key, ByteString.CopyFrom(kvp.Value ?? new byte[0]));
+                        }
 
-                    return state;
-                })
-        );
+                        return state;
+                    })
+            );
+        }
+
         _transactionExecutedEventData.Clear();
         return pbBlock;
     }
