@@ -16,6 +16,7 @@
         <None Include="bin\Debug\net8.0\AElf.WebApp.Application.Net.xml" />
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="AElf.Blockchains.MainChain" Version="$(AelfVersion)"/>
         <PackageReference Include="AElf.Blockchains.SideChain" Version="$(AelfVersion)"/>
         <PackageReference Include="Poseidon.Net" Version="0.1.1"/>
         <PackageReference Include="Bn254.Net" Version="0.1.0"/>
@@ -92,8 +93,6 @@
         </Content>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\AElf.Blockchains.MainChain\AElf.Blockchains.MainChain.csproj" />
-      <ProjectReference Include="..\AElf.Blockchains.SideChain\AElf.Blockchains.SideChain.csproj" />
       <ProjectReference Include="..\AElf.Firehose\AElf.Firehose.csproj" />
     </ItemGroup>
 
