@@ -6,6 +6,7 @@ using AElf.Kernel.Blockchain.Events;
 using AElf.Kernel.SmartContractExecution.Events;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Volo.Abp.EventBus;
 using Hash = AElf.Types.Hash;
 using TransactionTrace = AElf.Firehose.Pb.TransactionTrace;
@@ -27,12 +28,12 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
     private ConcurrentDictionary<AElf.Types.Hash, ExtendedTransactionExecutedEventData> _transactionExecutedEventData;
     private ILogger<FirehoseProcessor> _logger;
 
-    public FirehoseProcessor(FirehoseOptions options, IBlockchainService blockchainService,
+    public FirehoseProcessor(IOptionsSnapshot<FirehoseOptions> options, IBlockchainService blockchainService,
         ILogger<FirehoseProcessor> logger)
     {
         _blockchainService = blockchainService;
         _logger = logger;
-        _options = options;
+        _options = options.Value;
         _transactionExecutedEventData = new ConcurrentDictionary<Hash, ExtendedTransactionExecutedEventData>();
         Console.WriteLine($"FIRE INIT 3.0 {Pb.Block.Descriptor.FullName}");
     }
