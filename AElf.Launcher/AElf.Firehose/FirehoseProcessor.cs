@@ -46,6 +46,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     public async Task HandleEventAsync(BlockAttachedEvent eventData)
     {
+        if (eventData.ExistingBlock) return;
         var pbBlock = PreparePbBlock(eventData);
         if (pbBlock == null) return;
         var blockPayloadBase64 = Convert.ToBase64String(pbBlock.ToByteArray());
