@@ -14,6 +14,7 @@ public static class FirehoseServiceCollectionExtensions
     {
         services.AddSingleton<ILocalEventHandler<BlockAcceptedEvent>, FirehoseProcessor>();
         services.AddSingleton<ILocalEventHandler<BlockAttachedEvent>, FirehoseProcessor>();
+        services.AddSingleton<ILocalEventHandler<ExtendedTransactionExecutedEventData>, FirehoseProcessor>();
         services.AddSingleton<FirehoseProcessor>();
         services.RemoveAll(
             x => x.ImplementationType == typeof(ChainCreationService) &&
