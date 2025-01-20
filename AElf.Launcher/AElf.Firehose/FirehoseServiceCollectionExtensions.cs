@@ -3,6 +3,7 @@ using AElf.Kernel.ChainController.Application;
 using AElf.Kernel.SmartContract.Application;
 using AElf.Kernel.SmartContractExecution.Application;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Volo.Abp.EventBus;
 
 namespace AElf.Firehose;
@@ -26,6 +27,9 @@ public static class FirehoseServiceCollectionExtensions
                  x.ServiceType == typeof(IBlockAttachService)
         );
         services.AddTransient<IBlockAttachService, ExtendedBlockAttachService>();
+        services.RemoveAll(
+            x => x.ImplementationType == typeof(PlainTransactionExecutingService) &&
+                 x.ServiceType == typeof(ITransactionExecutingService));
         services.RemoveAll(
             x => x.ImplementationType == typeof(PlainTransactionExecutingService) &&
                  x.ServiceType == typeof(IPlainTransactionExecutingService)
