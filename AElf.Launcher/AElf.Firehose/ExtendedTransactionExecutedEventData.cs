@@ -1,4 +1,3 @@
-using AElf.Kernel;
 using AElf.Kernel.SmartContractExecution.Events;
 using AElf.Types;
 

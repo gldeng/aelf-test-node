@@ -2,7 +2,6 @@ using AElf.Kernel;
 using AElf.Kernel.FeatureDisable.Core;
 using AElf.Kernel.SmartContract;
 using AElf.Kernel.SmartContract.Application;
-using AElf.Kernel.SmartContractExecution.Events;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Volo.Abp.EventBus.Local;

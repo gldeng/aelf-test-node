@@ -3,7 +3,6 @@ using AElf.Kernel.ChainController.Application;
 using AElf.Kernel.SmartContract.Application;
 using AElf.Kernel.SmartContractExecution.Application;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Volo.Abp.EventBus;
 
 namespace AElf.Firehose;

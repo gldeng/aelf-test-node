@@ -1,15 +1,12 @@
 ﻿using System.Collections.Concurrent;
 using AElf.Firehose.Pb;
-using AElf.Kernel;
 using AElf.Kernel.Blockchain.Application;
 using AElf.Kernel.Blockchain.Events;
-using AElf.Kernel.SmartContractExecution.Events;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Volo.Abp.EventBus;
 using Hash = AElf.Types.Hash;
-using TransactionTrace = AElf.Firehose.Pb.TransactionTrace;
 
 namespace AElf.Firehose;
 
