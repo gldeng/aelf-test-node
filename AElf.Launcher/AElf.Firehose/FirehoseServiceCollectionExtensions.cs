@@ -34,6 +34,13 @@ public static class FirehoseServiceCollectionExtensions
                  x.ServiceType == typeof(IPlainTransactionExecutingService)
         );
         services.AddSingleton<IPlainTransactionExecutingService, WrappedPlainTransactionExecutingService>();
+
+        services.RemoveAll(
+            x => x.ImplementationType == typeof(FullBlockchainExecutingService) &&
+                 x.ServiceType == typeof(IBlockchainExecutingService)
+        );
+        services.AddSingleton<IBlockchainExecutingService, WrappedFullBlockchainExecutingService>();
+
         if (setupAction != null)
             services.Configure(setupAction);
         return services;
