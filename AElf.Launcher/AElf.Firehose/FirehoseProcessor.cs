@@ -20,7 +20,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
     ILocalEventHandler<ExtendedTransactionExecutedEventData>
 {
     private readonly FirehoseOptions _options;
-    private BlockAcceptedEvent? _acceptedEvent = null;
+    private List<BlockAcceptedEvent> _acceptedEvents = new List<BlockAcceptedEvent>();
     private readonly IBlockchainService _blockchainService;
     private ConcurrentDictionary<AElf.Types.Hash, ExtendedTransactionExecutedEventData> _transactionExecutedEventData;
     private ILogger<FirehoseProcessor> _logger;
@@ -37,29 +37,52 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     public Task HandleEventAsync(BlockAcceptedEvent? eventData)
     {
-        _acceptedEvent = eventData;
+        if (eventData != null)
+            _acceptedEvents.Add(eventData);
         return Task.CompletedTask;
     }
 
     public async Task HandleEventAsync(BlockAttachedEvent eventData)
     {
         if (eventData.ExistingBlock) return;
-        var pbBlock = PreparePbBlock(eventData);
+        var lastBlockAcceptedEvent = _acceptedEvents.Last();
+        if (
+            // ReSharper disable once ComplexConditionExpression
+            lastBlockAcceptedEvent.Block.Header.Height != eventData.Height ||
+            lastBlockAcceptedEvent.Block.Header.GetHash() != eventData.Hash
+        )
+        {
+            _logger.LogError("firehose block discrepancy");
+            _acceptedEvents = new List<BlockAcceptedEvent>();
+            return;
+        }
+
+        foreach (var @event in _acceptedEvents)
+        {
+            await PrepareAndPrintBlockAsync(@event);
+        }
+
+        _acceptedEvents = new List<BlockAcceptedEvent>();
+    }
+
+    private async Task PrepareAndPrintBlockAsync(BlockAcceptedEvent @event)
+    {
+        var pbBlock = PreparePbBlock(@event);
         if (pbBlock == null) return;
         var blockPayloadBase64 = Convert.ToBase64String(pbBlock.ToByteArray());
         // Convert DateTime to Unix time in nanoseconds
         var unixTimeNanos = (
-            _acceptedEvent.Block.Header.Time.ToDateTime() -
+            @event.Block.Header.Time.ToDateTime() -
             new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
         ).TotalNanoseconds;
         var chain = await _blockchainService.GetChainAsync();
 
         var blockLine = string.Format(
             "FIRE BLOCK {0} {1} {2} {3} {4} {5} {6}",
-            _acceptedEvent.Block.Height,
-            _acceptedEvent.Block.GetHash().ToHex(),
-            _acceptedEvent.Block.Height - 1,
-            _acceptedEvent.Block.Header.PreviousBlockHash.ToHex(),
+            @event.Block.Height,
+            @event.Block.GetHash().ToHex(),
+            @event.Block.Height - 1,
+            @event.Block.Header.PreviousBlockHash.ToHex(),
             chain.LastIrreversibleBlockHeight,
             (long)unixTimeNanos, // Cast to long for formatting
             blockPayloadBase64
@@ -67,38 +90,21 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         Console.WriteLine(blockLine);
     }
 
-    private Pb.Block? PreparePbBlock(BlockAttachedEvent eventData)
+    private Pb.Block? PreparePbBlock(BlockAcceptedEvent @event)
     {
-        if (_acceptedEvent == null)
-        {
-            Console.WriteLine("FIRE EXCEPTION NO_ACCEPTED_EVENT");
-            return null;
-        }
-
-        if (
-            // ReSharper disable once ComplexConditionExpression
-            _acceptedEvent.Block.Header.Height != eventData.Height ||
-            _acceptedEvent.Block.Header.GetHash() != eventData.Hash
-        )
-        {
-            _acceptedEvent = null;
-            Console.WriteLine("FIRE EXCEPTION DISCREPANCY");
-            return null;
-        }
-
-        var pbBlock = Pb.Block.Parser.ParseFrom(_acceptedEvent.Block.ToByteArray());
+        var pbBlock = Pb.Block.Parser.ParseFrom(@event.Block.ToByteArray());
         pbBlock.FirehoseBody = new FirehoseBlockBody();
         pbBlock.FirehoseBody.Transactions.AddRange(
-            _acceptedEvent.BlockExecutedSet.TransactionMap.Values.Select(
+            @event.BlockExecutedSet.TransactionMap.Values.Select(
                 t => Pb.Transaction.Parser.ParseFrom(t.ToByteArray()))
         );
         pbBlock.FirehoseBody.TrasanctionResults.AddRange(
-            _acceptedEvent.BlockExecutedSet.TransactionResultMap.Values.Select(
+            @event.BlockExecutedSet.TransactionResultMap.Values.Select(
                 ts => Pb.TransactionResult.Parser.ParseFrom(ts.ToByteArray()))
         );
         // if (_acceptedEvent.Block.Height > 1)
         pbBlock.FirehoseBody.TransactionTraces.AddRange(
-            _acceptedEvent.Block.TransactionIds.Select(
+            @event.Block.TransactionIds.Select(
                 txId => Pb.TransactionTrace.Parser.ParseFrom(_transactionExecutedEventData[txId].TransactionTrace
                     .ToByteArray())
             )
@@ -106,7 +112,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         if (_options.WithInitialStateTracking)
         {
             pbBlock.FirehoseBody.InitialStates.AddRange(
-                _acceptedEvent.Block.TransactionIds.Select(
+                @event.Block.TransactionIds.Select(
                     txId =>
                     {
                         var state = new InitialStateSet();
