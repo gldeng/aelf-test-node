@@ -26,8 +26,11 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
     // current block -> irreversible block
     private readonly ConcurrentDictionary<long, long> _irreverisbleBlocks = new ConcurrentDictionary<long, long>();
     private readonly IBlockchainService _blockchainService;
-    private readonly ConcurrentDictionary<AElf.Types.Hash, ExtendedTransactionExecutedEventData> _transactionExecutedEventData;
-    private ILogger<FirehoseProcessor> _logger;
+
+    private readonly ConcurrentDictionary<AElf.Types.Hash, ExtendedTransactionExecutedEventData>
+        _transactionExecutedEventData;
+
+    private readonly ILogger<FirehoseProcessor> _logger;
 
     public FirehoseProcessor(IOptionsSnapshot<FirehoseOptions> options, IBlockchainService blockchainService,
         ILogger<FirehoseProcessor> logger)
@@ -41,13 +44,18 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     public Task HandleEventAsync(BlockAcceptedEvent? eventData)
     {
-        if (eventData != null)
-            _acceptedEvents.Add(eventData);
+        if (eventData == null)
+            return Task.CompletedTask;
+        _logger.LogTrace("Handle BlockAcceptedEvent Height: {}, Hash: {}", eventData.Block.Height,
+            eventData.Block.GetHash().ToHex());
+        _acceptedEvents.Add(eventData);
         return Task.CompletedTask;
     }
 
     public async Task HandleEventAsync(BlockAttachedEvent eventData)
     {
+        _logger.LogTrace("Handle BlockAttachedEvent Height: {}, Hash: {}", eventData.Height, eventData.Hash.ToHex());
+
         if (eventData.ExistingBlock) return;
         await CheckIrreversibleBlockAsync(eventData.Height);
         var lastBlockAcceptedEvent = _acceptedEvents.Last();
@@ -87,6 +95,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
         var libHeight = _irreverisbleBlocks[@event.Block.Height];
 
+        _logger.LogTrace("Exporting block Height: {}, Hash: {}", @event.Block.Height, @event.Block.GetHash().ToHex());
         var blockLine = string.Format(
             "FIRE BLOCK {0} {1} {2} {3} {4} {5} {6}",
             @event.Block.Height,
@@ -141,7 +150,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
                     })
             );
         }
-        
+
         return pbBlock;
     }
 
@@ -153,6 +162,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     public async Task HandleEventAsync(PreBlockExecuteEvent eventData)
     {
+        _logger.LogTrace("Handle PreBlockExecuteEvent Height: {}, Hash: {}", eventData.Height, eventData.Hash);
         await CheckIrreversibleBlockAsync(eventData.Height - 1);
     }
 

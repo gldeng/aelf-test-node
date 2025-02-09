@@ -31,7 +31,6 @@ public class WrappedPlainTransactionExecutingService : PlainTransactionExecuting
         SingleTransactionExecutingDto singleTxExecutingDto,
         CancellationToken cancellationToken)
     {
-        Console.WriteLine($"WithInitialStateTracking {_options.WithInitialStateTracking}");
         if (_options.WithInitialStateTracking)
         {
             var chainContext = new ChainContextWrapperForTrackingOriginalStateValue(singleTxExecutingDto.ChainContext);
