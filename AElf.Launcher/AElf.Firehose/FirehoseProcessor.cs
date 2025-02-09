@@ -17,12 +17,16 @@ namespace AElf.Firehose;
 /// <see cref="BlockAcceptedEvent"/>.
 /// </summary>
 public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalEventHandler<BlockAttachedEvent>,
-    ILocalEventHandler<ExtendedTransactionExecutedEventData>
+    ILocalEventHandler<ExtendedTransactionExecutedEventData>, ILocalEventHandler<PreBlockExecuteEvent>
 {
     private readonly FirehoseOptions _options;
+
     private List<BlockAcceptedEvent> _acceptedEvents = new List<BlockAcceptedEvent>();
+
+    // current block -> irreversible block
+    private readonly ConcurrentDictionary<long, long> _irreverisbleBlocks = new ConcurrentDictionary<long, long>();
     private readonly IBlockchainService _blockchainService;
-    private ConcurrentDictionary<AElf.Types.Hash, ExtendedTransactionExecutedEventData> _transactionExecutedEventData;
+    private readonly ConcurrentDictionary<AElf.Types.Hash, ExtendedTransactionExecutedEventData> _transactionExecutedEventData;
     private ILogger<FirehoseProcessor> _logger;
 
     public FirehoseProcessor(IOptionsSnapshot<FirehoseOptions> options, IBlockchainService blockchainService,
@@ -45,6 +49,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
     public async Task HandleEventAsync(BlockAttachedEvent eventData)
     {
         if (eventData.ExistingBlock) return;
+        await CheckIrreversibleBlockAsync(eventData.Height);
         var lastBlockAcceptedEvent = _acceptedEvents.Last();
         if (
             // ReSharper disable once ComplexConditionExpression
@@ -54,6 +59,8 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         {
             _logger.LogError("firehose block discrepancy");
             _acceptedEvents = new List<BlockAcceptedEvent>();
+            _irreverisbleBlocks.Clear();
+            _transactionExecutedEventData.Clear();
             return;
         }
 
@@ -63,6 +70,8 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         }
 
         _acceptedEvents = new List<BlockAcceptedEvent>();
+        _irreverisbleBlocks.Clear();
+        _transactionExecutedEventData.Clear();
     }
 
     private async Task PrepareAndPrintBlockAsync(BlockAcceptedEvent @event)
@@ -75,7 +84,8 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
             @event.Block.Header.Time.ToDateTime() -
             new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
         ).TotalNanoseconds;
-        var chain = await _blockchainService.GetChainAsync();
+
+        var libHeight = _irreverisbleBlocks[@event.Block.Height];
 
         var blockLine = string.Format(
             "FIRE BLOCK {0} {1} {2} {3} {4} {5} {6}",
@@ -83,7 +93,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
             @event.Block.GetHash().ToHex(),
             @event.Block.Height - 1,
             @event.Block.Header.PreviousBlockHash.ToHex(),
-            chain.LastIrreversibleBlockHeight,
+            libHeight,
             (long)unixTimeNanos, // Cast to long for formatting
             blockPayloadBase64
         );
@@ -131,8 +141,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
                     })
             );
         }
-
-        _transactionExecutedEventData.Clear();
+        
         return pbBlock;
     }
 
@@ -140,5 +149,19 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
     {
         _transactionExecutedEventData[eventData.TransactionTrace.TransactionId] = eventData;
         return Task.CompletedTask;
+    }
+
+    public async Task HandleEventAsync(PreBlockExecuteEvent eventData)
+    {
+        await CheckIrreversibleBlockAsync(eventData.Height - 1);
+    }
+
+    private async Task CheckIrreversibleBlockAsync(long lastHeight)
+    {
+        if (!_irreverisbleBlocks.ContainsKey(lastHeight))
+        {
+            var chain = await _blockchainService.GetChainAsync();
+            _irreverisbleBlocks[lastHeight] = chain.LastIrreversibleBlockHeight;
+        }
     }
 }
