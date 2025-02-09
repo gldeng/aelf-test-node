@@ -66,7 +66,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
         foreach (var @event in _acceptedEvents)
         {
-            await PrepareAndPrintBlockAsync(@event);
+            PrepareAndPrintBlock(@event);
         }
 
         _acceptedEvents = new List<BlockAcceptedEvent>();
@@ -74,7 +74,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         _transactionExecutedEventData.Clear();
     }
 
-    private async Task PrepareAndPrintBlockAsync(BlockAcceptedEvent @event)
+    private void PrepareAndPrintBlock(BlockAcceptedEvent @event)
     {
         var pbBlock = PreparePbBlock(@event);
         if (pbBlock == null) return;
