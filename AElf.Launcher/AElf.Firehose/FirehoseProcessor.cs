@@ -72,6 +72,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
             return;
         }
 
+        _logger.LogTrace("Exporting {} blocks", _acceptedEvents.Count);
         foreach (var @event in _acceptedEvents)
         {
             PrepareAndPrintBlock(@event);
@@ -111,6 +112,8 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     private Pb.Block? PreparePbBlock(BlockAcceptedEvent @event)
     {
+        _logger.LogTrace("Preparing Pb Block Height: {}, Hash: {}", @event.Block.Height,
+            @event.Block.GetHash().ToHex());
         var pbBlock = Pb.Block.Parser.ParseFrom(@event.Block.ToByteArray());
         pbBlock.FirehoseBody = new FirehoseBlockBody();
         pbBlock.FirehoseBody.Transactions.AddRange(
