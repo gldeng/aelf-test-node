@@ -54,10 +54,12 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     public async Task HandleEventAsync(BlockAttachedEvent eventData)
     {
-        _logger.LogTrace("Handle BlockAttachedEvent Height: {}, Hash: {}", eventData.Height, eventData.Hash.ToHex());
+        _logger.LogTrace("Handle BlockAttachedEvent Height: {}, Hash: {}, Existing: {}",
+            eventData.Height, eventData.Hash.ToHex(), eventData.ExistingBlock);
 
         if (eventData.ExistingBlock) return;
         await CheckIrreversibleBlockAsync(eventData.Height);
+        _logger.LogTrace("lib dict size {}", _irreverisbleBlocks.Count);
         var lastBlockAcceptedEvent = _acceptedEvents.Last();
         if (
             // ReSharper disable once ComplexConditionExpression
