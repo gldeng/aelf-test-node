@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AElf.Kernel" Version="1.12.0" />
         <PackageReference Include="AElf.Kernel.ChainController" Version="$(AelfVersion)" />
         <PackageReference Include="AElf.Kernel.Core" Version="$(AelfVersion)"/>
         <PackageReference Include="AElf.Kernel.SmartContractExecution" Version="$(AelfVersion)"/>

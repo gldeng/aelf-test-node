@@ -1,5 +1,6 @@
 using AElf.Kernel.Blockchain.Events;
 using AElf.Kernel.ChainController.Application;
+using AElf.Kernel.Miner.Application;
 using AElf.Kernel.SmartContract.Application;
 using AElf.Kernel.SmartContractExecution.Application;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +42,11 @@ public static class FirehoseServiceCollectionExtensions
         );
         services.AddSingleton<IBlockchainExecutingService, WrappedFullBlockchainExecutingService>();
 
+        services.RemoveAll(
+            x => x.ImplementationType == typeof(MinerService) &&
+                 x.ServiceType == typeof(IMinerService)
+        );
+        services.AddSingleton<IMinerService, WrappedMinerService>();
         if (setupAction != null)
             services.Configure(setupAction);
         return services;

@@ -17,10 +17,12 @@ namespace AElf.Firehose;
 /// <see cref="BlockAcceptedEvent"/>.
 /// </summary>
 public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalEventHandler<BlockAttachedEvent>,
-    ILocalEventHandler<ExtendedTransactionExecutedEventData>, ILocalEventHandler<PreBlockExecuteEvent>
+    ILocalEventHandler<ExtendedTransactionExecutedEventData>, ILocalEventHandler<PreBlockExecuteEvent>,
+    ILocalEventHandler<MiningEvent>
 {
     private readonly FirehoseOptions _options;
 
+    private MiningEvent? _miningEvent = null;
     private List<BlockAcceptedEvent> _acceptedEvents = new List<BlockAcceptedEvent>();
 
     // current block -> irreversible block
@@ -57,7 +59,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         _logger.LogTrace("Handle BlockAttachedEvent Height: {}, Hash: {}, Existing: {}",
             eventData.Height, eventData.Hash.ToHex(), eventData.ExistingBlock);
 
-        if (eventData.ExistingBlock) return;
+        if (eventData.ExistingBlock && _miningEvent == null) return;
         await CheckIrreversibleBlockAsync(eventData.Height);
         _logger.LogTrace("lib dict size {}", _irreverisbleBlocks.Count);
         var lastBlockAcceptedEvent = _acceptedEvents.Last();
@@ -71,6 +73,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
             _acceptedEvents = new List<BlockAcceptedEvent>();
             _irreverisbleBlocks.Clear();
             _transactionExecutedEventData.Clear();
+            _miningEvent = null;
             return;
         }
 
@@ -83,6 +86,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         _acceptedEvents = new List<BlockAcceptedEvent>();
         _irreverisbleBlocks.Clear();
         _transactionExecutedEventData.Clear();
+        _miningEvent = null;
     }
 
     private void PrepareAndPrintBlock(BlockAcceptedEvent @event)
@@ -178,5 +182,11 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
             var chain = await _blockchainService.GetChainAsync();
             _irreverisbleBlocks[lastHeight] = chain.LastIrreversibleBlockHeight;
         }
+    }
+
+    public Task HandleEventAsync(MiningEvent eventData)
+    {
+        _miningEvent = eventData;
+        return Task.CompletedTask;
     }
 }
