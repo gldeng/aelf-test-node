@@ -2,6 +2,7 @@ using AElf.Kernel;
 using AElf.Kernel.Blockchain.Application;
 using AElf.Kernel.SmartContract.Domain;
 using AElf.Kernel.SmartContractExecution.Application;
+using Microsoft.Extensions.Logging;
 using Volo.Abp.EventBus.Local;
 
 namespace AElf.Firehose;
@@ -17,7 +18,8 @@ public class WrappedFullBlockchainExecutingService : IBlockchainExecutingService
         IBlockExecutingService blockExecutingService,
         ITransactionResultService transactionResultService,
         IBlockStateSetManger blockStateSetManger,
-        ILocalEventBus localEventBus)
+        ILocalEventBus localEventBus,
+        ILogger<FullBlockchainExecutingService> innerLogger)
     {
         var wrappedBlockExecutingService = new WrappedBlockExecutingService(blockExecutingService, localEventBus);
         _inner = new FullBlockchainExecutingService(
@@ -27,6 +29,8 @@ public class WrappedFullBlockchainExecutingService : IBlockchainExecutingService
             transactionResultService,
             blockStateSetManger
         );
+        _inner.LocalEventBus = localEventBus;
+        _inner.Logger = innerLogger;
         _localEventBus = localEventBus;
     }
 
