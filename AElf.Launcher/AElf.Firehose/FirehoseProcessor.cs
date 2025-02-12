@@ -26,7 +26,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
     private List<BlockAcceptedEvent> _acceptedEvents = new List<BlockAcceptedEvent>();
 
     // current block -> irreversible block
-    private readonly ConcurrentDictionary<long, long> _irreverisbleBlocks = new ConcurrentDictionary<long, long>();
+    private readonly ConcurrentDictionary<long, long> _irreversibleBlocks = new ConcurrentDictionary<long, long>();
     private readonly IBlockchainService _blockchainService;
 
     private readonly ConcurrentDictionary<AElf.Types.Hash, ExtendedTransactionExecutedEventData>
@@ -61,7 +61,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
         if (eventData.ExistingBlock && _miningEvent == null) return;
         await CheckIrreversibleBlockAsync(eventData.Height);
-        _logger.LogTrace("lib dict size {}", _irreverisbleBlocks.Count);
+        _logger.LogTrace("lib dict size {}", _irreversibleBlocks.Count);
         var lastBlockAcceptedEvent = _acceptedEvents.Last();
         if (
             // ReSharper disable once ComplexConditionExpression
@@ -71,7 +71,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         {
             _logger.LogError("firehose block discrepancy");
             _acceptedEvents = new List<BlockAcceptedEvent>();
-            _irreverisbleBlocks.Clear();
+            _irreversibleBlocks.Clear();
             _transactionExecutedEventData.Clear();
             _miningEvent = null;
             return;
@@ -84,7 +84,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         }
 
         _acceptedEvents = new List<BlockAcceptedEvent>();
-        _irreverisbleBlocks.Clear();
+        _irreversibleBlocks.Clear();
         _transactionExecutedEventData.Clear();
         _miningEvent = null;
     }
@@ -100,7 +100,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
             new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
         ).TotalNanoseconds;
 
-        var libHeight = _irreverisbleBlocks[@event.Block.Height];
+        var libHeight = _irreversibleBlocks[@event.Block.Height];
 
         _logger.LogTrace("Exporting block Height: {}, Hash: {}", @event.Block.Height, @event.Block.GetHash().ToHex());
         var blockLine = string.Format(
@@ -178,10 +178,10 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     private async Task CheckIrreversibleBlockAsync(long lastHeight)
     {
-        if (!_irreverisbleBlocks.ContainsKey(lastHeight))
+        if (!_irreversibleBlocks.ContainsKey(lastHeight))
         {
             var chain = await _blockchainService.GetChainAsync();
-            _irreverisbleBlocks[lastHeight] = chain.LastIrreversibleBlockHeight;
+            _irreversibleBlocks[lastHeight] = chain.LastIrreversibleBlockHeight;
         }
     }
 
