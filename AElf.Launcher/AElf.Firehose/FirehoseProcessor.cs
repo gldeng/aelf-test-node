@@ -178,7 +178,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     public async Task HandleEventAsync(PreBlockExecuteEvent eventData)
     {
-        _logger.LogTrace("Handle PreBlockExecuteEvent Height: {}, Hash: {}", eventData.Height, eventData.Hash);
+        _logger.LogTrace("Handle PreBlockExecuteEvent Height: {}, Hash: {}", eventData.Height, eventData.Hash.ToHex());
         await CheckIrreversibleBlockAsync(eventData.Height - 1);
     }
 
