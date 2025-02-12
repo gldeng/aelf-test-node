@@ -165,6 +165,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
 
     public Task HandleEventAsync(ExtendedTransactionExecutedEventData eventData)
     {
+        _logger.LogTrace("Handle ExtendedTransactionExecutedEventData TxId: {}", eventData.TransactionTrace.TransactionId.ToHex());
         _transactionExecutedEventData[eventData.TransactionTrace.TransactionId] = eventData;
         return Task.CompletedTask;
     }
