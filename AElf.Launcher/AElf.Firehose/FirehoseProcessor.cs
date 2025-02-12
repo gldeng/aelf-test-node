@@ -59,7 +59,11 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         _logger.LogTrace("Handle BlockAttachedEvent Height: {}, Hash: {}, Existing: {}",
             eventData.Height, eventData.Hash.ToHex(), eventData.ExistingBlock);
 
-        if (eventData.ExistingBlock && _miningEvent == null) return;
+        if (eventData.ExistingBlock && _miningEvent == null)
+        {
+            ResetState();
+            return;
+        }
         await CheckIrreversibleBlockAsync(eventData.Height);
         _logger.LogTrace("lib dict size {}", _irreversibleBlocks.Count);
         var lastBlockAcceptedEvent = _acceptedEvents.Last();
@@ -70,10 +74,7 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
         )
         {
             _logger.LogError("firehose block discrepancy");
-            _acceptedEvents = new List<BlockAcceptedEvent>();
-            _irreversibleBlocks.Clear();
-            _transactionExecutedEventData.Clear();
-            _miningEvent = null;
+            ResetState();
             return;
         }
 
@@ -83,6 +84,11 @@ public class FirehoseProcessor : ILocalEventHandler<BlockAcceptedEvent>, ILocalE
             PrepareAndPrintBlock(@event);
         }
 
+        ResetState();
+    }
+
+    private void ResetState()
+    {
         _acceptedEvents = new List<BlockAcceptedEvent>();
         _irreversibleBlocks.Clear();
         _transactionExecutedEventData.Clear();
